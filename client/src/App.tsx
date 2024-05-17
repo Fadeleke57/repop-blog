@@ -1,12 +1,13 @@
 import './App.css';
-import Layout from "./Layout"
+import React from 'react';
+import Layout from "./Layout.tsx"
 import {Route, Routes} from "react-router-dom";
-import IndexPage from './pages/IndexPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import CreatePost from './pages/CreatePost';
-import PostPage from './pages/PostPage';
-import EditPost from './pages/EditPost';
+import IndexPage from './pages/IndexPage.tsx';
+import LoginPage from './pages/LoginPage.tsx';
+import RegisterPage from './pages/RegisterPage.tsx';
+import CreatePost from './pages/CreatePost.tsx';
+import PostPage from './pages/PostPage.tsx';
+import EditPost from './pages/EditPost.tsx';
 
 import { UserContextProvider } from './UserContext';
 
