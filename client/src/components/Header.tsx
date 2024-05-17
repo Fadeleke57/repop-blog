@@ -1,10 +1,14 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 export default function Header() {
-  const {setUserInfo, userInfo} = useContext(UserContext)
+  const context = useContext(UserContext);
+
+  if (!context) {
+    throw new Error("Header must be used within a UserProvider");
+  }
+  const { userInfo, setUserInfo } = context;
 
   useEffect(() => {
     fetch('http://localhost:4000/profile', {
@@ -14,14 +18,14 @@ export default function Header() {
         setUserInfo(userInfo);
       });
     });
-  }, [setUserInfo])
+  }, [setUserInfo]);
 
   function logout() {
     fetch('http://localhost:4000/logout', {
       credentials: 'include',
       method: 'POST',
     })
-    setUserInfo(null)
+    setUserInfo(null);
   }
 
   const username = userInfo?.username;
@@ -30,17 +34,16 @@ export default function Header() {
     <header>
       <Link to="/" className="logo">MyBlog</Link>
       <nav>
-        {username && (
+        {username ? (
           <>
             <span>Hello, {username}!</span>
-            <Link to='/create'>Create New Post</Link>
-            <Link onClick={logout} to='/'>Logout</Link>
+            <Link to="/create">Create New Post</Link>
+            <Link onClick={logout} to="/">Logout</Link>
           </>
-        )}
-        {!username && (
+        ) : (
           <>
             <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>            
+            <Link to="/register">Register</Link>
           </>
         )}
       </nav>

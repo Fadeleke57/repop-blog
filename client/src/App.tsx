@@ -1,19 +1,19 @@
 import './App.css';
 import React from 'react';
-import Layout from "./Layout.tsx"
+import Layout from "./Layout"
 import {Route, Routes} from "react-router-dom";
-import IndexPage from './pages/IndexPage.tsx';
-import LoginPage from './pages/LoginPage.tsx';
-import RegisterPage from './pages/RegisterPage.tsx';
-import CreatePost from './pages/CreatePost.tsx';
-import PostPage from './pages/PostPage.tsx';
-import EditPost from './pages/EditPost.tsx';
+import IndexPage from './pages/IndexPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import CreatePost from './pages/CreatePost';
+import PostPage from './pages/PostPage';
+import EditPost from './pages/EditPost';
 
-import { UserContextProvider } from './UserContext';
+import { UserProvider } from './UserContext';
 
 function App() {
   return (
-      <UserContextProvider>
+      <UserProvider>
         <Routes>
           <Route path="/" element={<Layout />}> 
               <Route index element={<IndexPage />} />
@@ -24,7 +24,7 @@ function App() {
               <Route path="/edit/:id" element={<EditPost />} />
           </Route>
         </Routes>
-      </UserContextProvider>
+      </UserProvider>
   );
 }
 

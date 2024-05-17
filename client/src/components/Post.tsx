@@ -2,7 +2,21 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {formatISO9075} from 'date-fns'
 
-export default function Post({_id, title, summary, cover, content, author, createdAt}) {
+type Author = {
+  username: String
+}
+
+type PostProps = {
+  _id: Number,
+  title: String,
+  summary: String,
+  cover: String,
+  content: String,
+  author: Author,
+  createdAt: string | number,
+}
+
+export default function Post({_id, title, summary, cover, content, author, createdAt} : PostProps) {
 
   return (
     <div className="post">

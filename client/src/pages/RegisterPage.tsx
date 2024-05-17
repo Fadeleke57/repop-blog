@@ -1,16 +1,17 @@
-import { React, useState } from "react"
+import React, { useState, FormEvent } from "react"
 
 export default function RegisterPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    async function register(e) {
+
+    async function register(e : FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const response = await fetch('http://localhost:4000/register', {
             method: 'POST',
             body: JSON.stringify({username, password}),
             headers: {'Content-Type': 'application/json'} 
         });
-        if (response.staus === 200) {
+        if (response.status === 200) {
             alert('registration successful!');
         } else {
             alert('registration failed');
