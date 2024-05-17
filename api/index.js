@@ -1,20 +1,18 @@
-const express = require('express');
+const express = require('express'); //main
 const app = express();
 const configureMiddleware = require('./middleware');
 const db = require('./db');
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 
-// Configure middleware
-configureMiddleware(app);
 
-// Use routes
-app.use(userRoutes);
+configureMiddleware(app); // configures middleware
+
+app.use(userRoutes); // use routes
 app.use(postRoutes);
 
-// Start the server
-const PORT = process.env.PORT || 4000;
+
+const PORT = process.env.PORT || 4000; // starts server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-//mongodb+srv://Fadeleke:O1ZkZOJVRYo4WDOP@cluster0.dna7mv2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
