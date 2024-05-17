@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import Editor from '../Editor';
+import Editor from '../components/Editor';
 
 export default function CreatePost() {
   const [title, setTitle] = useState('');
@@ -17,7 +17,7 @@ export default function CreatePost() {
     data.set('content', content);
     data.append('file', files[0]);
 
-    const response = await fetch('http://localhost:4000/post', {
+    await fetch('http://localhost:4000/post', {
       method: 'POST',
       body: data,
       credentials: 'include'

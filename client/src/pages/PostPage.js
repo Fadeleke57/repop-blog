@@ -20,7 +20,7 @@ export default function PostPage() {
         });
         console.log(postInfo) 
     }
-  }, []);  
+  }, [id, postInfo]);  
 
   if (!postInfo) return '';
 
@@ -43,7 +43,7 @@ export default function PostPage() {
         )}
 
         <div className='image'>
-            <img src={`http://localhost:4000/${postInfo.cover}`}></img>
+            <img src={`http://localhost:4000/${postInfo.cover}`} alt=''></img>
         </div>
         
         <div className='content' dangerouslySetInnerHTML={{__html:postInfo.content}}/>
