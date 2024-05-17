@@ -12,7 +12,7 @@ img{
 }
 main{
   padding: 10px;
-  max-width: 906px;
+  max-width: 700px;
   margin: 0 auto;
 }
 header{
@@ -104,7 +104,7 @@ form.login h1, form.register h1{
 }
 
 div.post-page div.image{
-  max-height:300px;
+  max-height: 300px;
   display: flex;
   overflow:hidden;
 }
