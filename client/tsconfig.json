@@ -7,8 +7,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "jsx": "react" // Add this line to support JSX/TSX syntax
+    "jsx": "react" 
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.jsx", "src/**/*.js", "api/**/*.ts", "api/**/*.ts", "api/**/*.js"],
+  "include": ["src/**/*","api/**/*" ],
   "exclude": ["node_modules"]
 }
