@@ -30,7 +30,7 @@ export default function IndexPage() {
   return (
     <div>
       {posts.length > 0 && posts.map((post, id) => (
-        <Post key={id} {...post} />
+          <Post key={id} {...post} />
       ))}
     </div>
   );

@@ -3,9 +3,9 @@ import { Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 export default function LoginPage() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [redirect, setRedirect] = useState(false);
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [redirect, setRedirect] = useState<Boolean>(false);
 
     const context = useContext(UserContext);
     if (!context) {

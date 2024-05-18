@@ -4,11 +4,11 @@ import Editor from "../components/Editor";
 
 export default function EditPost() {
   const { id } = useParams<{ id: string }>();
-  const [title, setTitle] = useState('');
-  const [summary, setSummary] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState<string>('');
+  const [summary, setSummary] = useState<string>('');
+  const [content, setContent] = useState<string>('');
   const [files, setFiles] = useState<FileList | null>(null);
-  const [redirect, setRedirect] = useState(false);
+  const [redirect, setRedirect] = useState<boolean>(false);
 
   useEffect(() => {
     fetch('http://localhost:4000/post/' + id)
