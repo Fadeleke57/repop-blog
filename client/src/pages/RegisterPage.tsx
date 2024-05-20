@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from "react"
+import './Login.css'
 
 export default function RegisterPage() {
     const [username, setUsername] = useState('');

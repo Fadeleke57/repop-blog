@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {formatISO9075} from 'date-fns'
+import './Post.css'
 
 type Author = {
   username: String
@@ -14,29 +15,39 @@ type PostProps = {
   content: String,
   author: Author,
   createdAt: string | number,
+  postConfigs: {
+    isFeaturedPost : boolean,
+    imageAllowed: boolean
+  },
 }
 
-export default function Post({_id, title, summary, cover, content, author, createdAt} : PostProps) {
+export default function Post({_id, title, summary, cover, content, author, createdAt, postConfigs} : PostProps) {
 
   return (
-    <div className="post">
-      <div className="image">
-        <Link to={`/posts/${_id}`}>
-          <img src={`http://localhost:4000/${cover}`} alt=""/>
-        </Link>
-      </div>
-      <div className="texts">
-        <div>
-            <Link to={`/post/${_id}`}>
-            <h2>{title}</h2>
-            </Link>
-            <p className="info">
-            <Link className="author" to={`/post/${_id}`}>{author.username}</Link>
-            <time>{formatISO9075(new Date(createdAt))}</time>
-            </p>
-            <p className="summary">{summary}</p>             
+    <Link className="post-link" to={`/post/${_id}`}>
+      <div className="post">
+        {cover && postConfigs.imageAllowed && postConfigs.isFeaturedPost &&
+          <div className="image">
+            <img src={`http://localhost:4000/${cover}`} alt=""/>
+          </div>
+        }
+        {cover && !postConfigs.isFeaturedPost && postConfigs.imageAllowed &&
+            <div className="image2">
+              <img src={`http://localhost:4000/${cover}`} alt=""/>
+            </div>
+        }
+        <div className="texts">
+          <div>
+              <span className="post-tag"><h3>Company</h3></span><br/>
+              <h2 className="post-title">{title}</h2>
+              <span className="info">
+              <span className="author">{author.username}-</span>
+              <time>{formatISO9075(new Date(createdAt))}</time>
+              </span>
+              <p className="summary">{summary}</p>             
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { formatISO9075 } from 'date-fns';
 import { UserContext } from '../UserContext';
+import './PostPage.css'
 
 type PostInfoType = {
   title: string;
