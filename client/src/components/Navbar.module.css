@@ -8,6 +8,7 @@
     width: 100%;
     z-index: 1000;
     transition: transform 0.3s ease;
+    font-family: "Hanken Grotesk", sans-serif;
   }
 
   .hidden {
@@ -57,7 +58,7 @@
   }
   
   .brand {
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: bold;
     display: flex;
     justify-content: center;

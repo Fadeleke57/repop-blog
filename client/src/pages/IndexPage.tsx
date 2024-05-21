@@ -3,6 +3,7 @@ import Post from "../components/Post";
 import './IndexPage.css'
 import UtilityButton from "../components/UtilityButton";
 import FilterBar from "../components/FilterBar";
+import { Link } from "react-router-dom";
 
 type Author = {
     username: String
@@ -66,28 +67,33 @@ export default function IndexPage() {
 
         <div className="featured-post">
           {first && 
-          <Post {...first} postConfigs={{isFeaturedPost : true, imageAllowed : true}}></Post>
+          <Link className="post-wrapper" to={`/post/${first._id}`}>
+            <Post {...first} postConfigs={{isFeaturedPost : true, imageAllowed : true}}></Post>
+          </Link>
           }
         </div>
 
         <div className="featured-posts-ni">
             {second && 
-            <Post {...second} postConfigs={{isFeaturedPost : true, imageAllowed : false}}></Post>
+            <div className="ni-wrapper">
+              <Post {...second} postConfigs={{isFeaturedPost : true, imageAllowed : false}}></Post>
+            </div>
             }
             {third && 
-            <Post {...third} postConfigs={{isFeaturedPost : true, imageAllowed : false}}></Post>
+            <div className="ni-wrapper">
+              <Post {...third} postConfigs={{isFeaturedPost : true, imageAllowed : false}}></Post>
+            </div>
             }
         </div>
-
       </div>
 
       <FilterBar/>
 
       <div className="content-wrapper">
         {posts.length > 0 && posts.map((post, id) => (
-          <div>
+          <Link className="post-wrapper" to={`/post/${post._id}`}>
             <Post key={id} {...post} postConfigs={{isFeaturedPost : false, imageAllowed : true}}/>
-          </div>
+          </Link>
         ))}
       </div>
     </>

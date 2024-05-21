@@ -1,27 +1,20 @@
 .title-wrapper h1 {
-  font-size: 4.5em;
-  font-family: HKGrotesk, sans-serif;
-}
-  
-.title, .title-wrapper {
-  padding: 0;
+  font-size: 74px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 800;
+  line-height: 74px;
 }
 
 .subtitle-wrapper {
   display: grid;
   gap: 2em;
   grid-template-columns: 1fr 1fr;
-  font-family: HKGrotesk, sans-serif;
 }
 
 .featured-content-wrapper {
   display: grid;
   grid-gap: 2em;
   grid-template-columns: 1fr 1fr;
-}
-  
-.featured-content-wrapper div:not(.subtitle-wrapper, .utility-links, .featured-posts-ni) {
-  background-color: #EDEDED;
 }
   
 .utility-links {
@@ -36,6 +29,8 @@
 
 .featured-post {
   align-self: flex-start;
+  transition: transform 0.3s ease;
+  background-color: #EDEDED;
 }
   
 .featured-posts-ni {
@@ -50,7 +45,7 @@
 }
 
 .utility-button {
-  font-family: HKGrotesk, sans-serif;
+  font-family: "Hanken Grotesk", sans-serif;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
@@ -70,6 +65,7 @@
   background-color: #EDEDED;
   margin-top: 3em;
   height: 3.9em;
+  font-family: "Hanken Grotesk", sans-serif;
 }
 
 .filter-bar p {
@@ -82,13 +78,13 @@
 .filter-bar p:hover {
   color: #575cff;
   cursor: pointer;
-  border-bottom: 5px solid #686868;
+  border-bottom: 4px solid #686868;
 }
 
 .filter-bar p.active {
   color: #575cff;
   cursor: pointer;
-  border-bottom: 5px solid #686868;
+  border-bottom: 4px solid #686868;
 }
 
 .content-wrapper {
@@ -97,6 +93,30 @@
   gap: 2em;
 }
 
-.content-wrapper div {
+.post-wrapper {
+  position: relative;
+  border-radius: 1em;
+  height: 90vh;
+  transition: transform 0.3s ease;
+  text-decoration: none;
   background-color: #EDEDED;
+}
+
+.ni-wrapper {
+  transition: transform 0.3s ease;
+  border-radius: 1em;
+  background-color: #EDEDED;
+}
+
+.post-wrapper:hover, 
+.featured-post:hover,
+.ni-wrapper:hover {
+  cursor: pointer;
+  box-shadow: 10px 10px #575cff;
+  transform: translate(-20px, -20px);
+}
+
+.featured-content-wrapper a, .content-wrapper a {
+  text-decoration: none;
+  color: inherit;
 }

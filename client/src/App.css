@@ -11,7 +11,7 @@ a{
 
 body {
   color: #222;
-  font-family: Roboto, sans-serif;
+  font-family: "Hanken Grotesk", sans-serif;
 }
 
 img {
@@ -26,4 +26,19 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2em;
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+footer h2 {
+  text-align: center;
+  font-size: 1.4em;
 }

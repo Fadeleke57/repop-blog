@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {formatISO9075} from 'date-fns'
+import { formatDistanceToNow } from 'date-fns';
 import './Post.css'
 
 type Author = {
@@ -25,7 +25,7 @@ export default function Post({_id, title, summary, cover, content, author, creat
 
   return (
     <Link className="post-link" to={`/post/${_id}`}>
-      <div className="post">
+      <div className={"post"}>
         {cover && postConfigs.imageAllowed && postConfigs.isFeaturedPost &&
           <div className="image">
             <img src={`http://localhost:4000/${cover}`} alt=""/>
@@ -38,13 +38,15 @@ export default function Post({_id, title, summary, cover, content, author, creat
         }
         <div className="texts">
           <div>
-              <span className="post-tag"><h3>Company</h3></span><br/>
-              <h2 className="post-title">{title}</h2>
-              <span className="info">
-              <span className="author">{author.username}-</span>
-              <time>{formatISO9075(new Date(createdAt))}</time>
-              </span>
-              <p className="summary">{summary}</p>             
+            <span className="post-tag"><h3>Company</h3></span><br/>
+            <h2 className="post-title">{title}</h2>
+            <p className="summary">{summary}</p> 
+            {!postConfigs.isFeaturedPost &&
+                <small className="info">
+                  <span className="author">{author.username} - </span>
+                  <span className="post-date">{formatDistanceToNow(new Date(createdAt))} ago</span>    
+                </small>  
+            }
           </div>
         </div>
       </div>
