@@ -81,9 +81,12 @@
     .footer1 .footer_top .container {
       gap: 1em;
     }
-
+    .footer1 .container {
+      padding: 2em 0.5em;
+    }
     .col3 {
       flex-basis: 100%;
+      padding-top: 5.2em;
     };
     .footer1 .footer-top .container, .footer1 .footer_bottom .container {
       flex-direction: column;

@@ -159,6 +159,15 @@ div.post-page-content p {
   color: #666666;
 }
 
+div.post-page-content blockquote {
+  max-width: 80%;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 36px;
+  color: #575cff;
+  margin-bottom: 1em;
+}
+
 .post-page-content {
   max-width: 90%;
 }
@@ -203,4 +212,78 @@ div.post-page a.edit-btn {
 
 a svg{
   height: 20px;
+}
+
+@media screen and (max-width: 1090px) {
+  .post-page {
+    padding: 0 1.2em;
+  }
+  .post-page-content-wrapper {
+    flex-direction: column;
+  }
+  .post-page-content-row1 {
+    width: 100%;
+  }
+  .post-page-content-row2 {
+    width: 100%;
+  }
+  .post-page-tag-wrapper {
+    display: flex;
+    flex-direction: inline-flex;
+    justify-content: space-between;
+  }
+  div.post-page-content p {
+    max-width: 100%
+  }
+  .post-page-content {
+    max-width: 100%;
+  }
+  div.post-page div.image {
+    max-width: 100%;
+    height: 300px;
+  }
+  div.post-page-intro h1 {
+    margin: 21px 0 20px;
+    max-width: 800px;
+    font-size: 27px;
+    line-height: 30px;
+    font-weight: 800;
+  }
+
+  div.post-page-content p {
+    font-size: 16px;
+    line-height: 23px;
+    margin: 30px 0;
+    color: #666666;
+  }
+  
+  .post-page-content {
+    max-width: 100%;
+  }
+  
+  div.post-page-content a {
+    color:rgb(87, 92, 255)
+  }
+  
+  div.post-page-content li {
+    font-size: 17px;
+    line-height: 21px;
+  }
+  
+  .post-page-content h3 {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 35px;
+  }
+
+  .post-page-intro p {
+    font-size: 19px;
+    line-height: 28px;
+  }
+  div.post-page-content blockquote {
+    max-width: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+  }
 }
