@@ -41,7 +41,7 @@ div.post div.image2 img {
 div.post div.texts {
   display: flex;
   width: 100%;
-  padding: 2em 2em;
+  padding: 2em;
   border-radius: 1em;
 }
 
@@ -98,6 +98,12 @@ div.post p.summary {
   color: #737a80
 }
 
+@media screen and (max-width: 950px) {
+  div.post div.image {
+    height: 300px;
+  }
+}
+
 @media screen and (min-width: 700px) {
   div.post{
       grid-template-columns: .9fr 1.1fr;
@@ -110,4 +116,10 @@ div.post p.summary {
     height: 300px;
     overflow: hidden;
   }  
+  .summary {
+    display: none;
+  }
+  div.post div.texts {
+    padding: 1em;
+  }
 }

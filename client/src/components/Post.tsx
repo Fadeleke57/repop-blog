@@ -17,7 +17,8 @@ type PostProps = {
   createdAt: string | number,
   postConfigs: {
     isFeaturedPost : boolean,
-    imageAllowed: boolean
+    imageAllowed: boolean,
+    isSummaryAllowed: boolean
   },
 }
 
@@ -40,7 +41,9 @@ export default function Post({_id, title, summary, cover, content, author, creat
           <div>
             <span className="post-tag"><h3>Company</h3></span><br/>
             <h2 className="post-title">{title}</h2>
+            {postConfigs.isSummaryAllowed &&
             <p className="summary">{summary}</p> 
+            }
             {!postConfigs.isFeaturedPost &&
                 <small className="info">
                   <span className="author">{author.username} - </span>

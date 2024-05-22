@@ -20,11 +20,13 @@ img {
 }
 
 main {
-  max-width: 1275px;
+  padding: 5em 5em 0 5em;
   margin: 0 auto;
-  padding-top: 5em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   gap: 2em;
 }
 
@@ -41,4 +43,10 @@ footer {
 footer h2 {
   text-align: center;
   font-size: 1.4em;
+}
+
+@media screen and (max-width: 900px) {
+  main {
+    padding: 5em 2em 0 2em;
+  }
 }
