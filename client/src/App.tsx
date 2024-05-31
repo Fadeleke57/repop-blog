@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from 'react';
+import React from 'react';
 import Layout from "./Layout"
 import {Route, Routes} from "react-router-dom";
 import IndexPage from './pages/IndexPage';
@@ -12,7 +12,6 @@ import EditPost from './pages/EditPost';
 import { UserProvider } from './UserContext';
 
 function App() {
-  const [loading, setLoading] = useState(true);
   
   return (
       <UserProvider>

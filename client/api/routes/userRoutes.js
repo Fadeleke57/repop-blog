@@ -6,7 +6,7 @@ const User = require('../models/User');
 
 const router = express.Router();
 const salt = bcrypt.genSaltSync(10);
-const secret = 'ufuoeofje839heruhfeuhwuf';
+const secret = process.env.REACT_APP_SECRET_HASH;
 
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;

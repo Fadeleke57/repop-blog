@@ -1,6 +1,10 @@
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 const mongoose = require('mongoose');
 
-const URI = 'mongodb+srv://Fadeleke:O1ZkZOJVRYo4WDOP@cluster0.dna7mv2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+const URI = process.env.MONGODB_URI
 
 if (!URI) {
   throw new Error('MONGODB_URI environment variable not defined');

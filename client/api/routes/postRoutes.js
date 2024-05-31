@@ -4,7 +4,7 @@ const fs = require('fs');
 const Post = require('../models/Post');
 
 const router = express.Router();
-const secret = 'ufuoeofje839heruhfeuhwuf';
+const secret = process.env.REACT_APP_SECRET_HASH;
 
 router.post('/post', async (req, res) => {
   const { originalname, path } = req.file;
