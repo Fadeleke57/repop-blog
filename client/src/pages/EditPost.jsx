@@ -27,7 +27,7 @@ export default function EditPost() {
     data.set('title', title);
     data.set('summary', summary);
     data.set('content', content);
-    data.set('id', id); // The '!' asserts that 'id' is not null or undefined.
+    data.set('id', id);
     if (files && files[0]) {
       data.append('file', files[0]);
     }
@@ -38,6 +38,10 @@ export default function EditPost() {
     });
     if (response.ok) {
       setRedirect(true);
+    }
+    else {
+      const errorData = await response.json();
+      console.error('Error updating post:', errorData);
     }
   }
 

@@ -9,21 +9,19 @@ const router = express.Router();
 const salt = bcrypt.genSaltSync(10);
 const secret = process.env.REACT_APP_SECRET_HASH;
 
-
-router.post('/register', async (req, res) => {// register route
+router.post('/register', async (req, res) => {
   const { username, password } = req.body;
   try {
-    const UserDoc = await User.create({
+    const userDoc = await User.create({
       username,
-      password: bcrypt.hashSync(password, salt)
+      password: bcrypt.hashSync(password, salt),
     });
-    res.json(UserDoc);
-  } catch (e) {
-    res.status(400).json(e);
+    res.json(userDoc);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 });
 
-// Login route
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -31,7 +29,6 @@ router.post('/login', async (req, res) => {
     if (!userDoc) {
       return res.status(400).json('Invalid Credentials');
     }
-
     const passOk = bcrypt.compareSync(password, userDoc.password);
     if (passOk) {
       jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
@@ -44,17 +41,16 @@ router.post('/login', async (req, res) => {
     } else {
       res.status(400).json('Invalid Credentials');
     }
-  } catch (e) {
-    res.status(500).json('Server error');
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
-// Profile route
+
 router.get('/profile', authenticateToken, (req, res) => {
   res.json(req.user);
 });
 
-// Logout route
 router.post('/logout', (req, res) => {
   res.cookie('token', '', { httpOnly: true }).json('ok');
 });
