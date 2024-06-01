@@ -1,7 +1,7 @@
 const express = require('express'); //main
 const app = express();
 const configureMiddleware = require('./middleware');
-const db = require('./db.ts');
+const db = require('./db');
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 
