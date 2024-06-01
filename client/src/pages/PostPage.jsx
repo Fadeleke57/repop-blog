@@ -82,7 +82,7 @@ export default function PostPage() {
 
         <div className='post-page-content-row1'>
           <div className='image'>
-            <img src={`http://localhost:4000/${postInfo.cover}`} alt='Post cover' />
+            <img src={`https://repop-blog-server.onrender.com/${postInfo.cover}`} alt='Post cover' />
           </div>
           <div className='post-page-content' dangerouslySetInnerHTML={{ __html: postInfo.content }}>
           </div>

@@ -31,17 +31,25 @@ export default function EditPost() {
     if (files && files[0]) {
       data.append('file', files[0]);
     }
+  
     const response = await fetch('https://repop-blog-server.onrender.com/post', {
       method: 'PUT',
       body: data,
       credentials: 'include',
     });
+  
     if (response.ok) {
       setRedirect(true);
-    }
-    else {
-      const errorData = await response.json();
-      console.error('Error updating post:', errorData);
+    } else {
+      // Check if the response is JSON or plain text
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const errorData = await response.json();
+        console.error('Error updating post:', errorData);
+      } else {
+        const errorText = await response.text();
+        console.error('Error updating post:', errorText);
+      }
     }
   }
 
