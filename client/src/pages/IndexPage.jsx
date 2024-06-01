@@ -6,27 +6,13 @@ import FilterBar from "../components/FilterBar";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 
-type Author = {
-  username: String
-}
-  
-type PostType = {
-  _id: Number,
-  title: String,
-  summary: String,
-  cover: String,
-  content: String,
-  author: Author,
-  createdAt: string,
-}
-
 export default function IndexPage() {
-  const [posts, setPosts] = useState<PostType[]>([]);
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:4000/post').then(response => {
-      response.json().then((posts: PostType[]) => {
+    fetch('https://repop-blog-server.onrender.com/post').then(response => {
+      response.json().then((posts) => {
         setPosts(posts);
         setLoading(false)
       });

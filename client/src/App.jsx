@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import Layout from "./Layout"
+import Layout from './Layout'
 import {Route, Routes} from "react-router-dom";
 import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/LoginPage';

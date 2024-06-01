@@ -1,12 +1,12 @@
 import React, { useState, useContext, FormEvent } from "react";
 import { Navigate } from "react-router-dom";
-import { UserContext } from "../UserContext";
+import {UserContext} from  '../UserContext.jsx'
 import './PostPage.css'
 
 export default function LoginPage() {
-    const [username, setUsername] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [redirect, setRedirect] = useState<Boolean>(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [redirect, setRedirect] = useState(false);
 
     const context = useContext(UserContext);
     if (!context) {
@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     async function login(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const response = await fetch('http://localhost:4000/login', {
+        const response = await fetch('https://repop-blog-server.onrender.com/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },

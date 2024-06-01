@@ -3,15 +3,15 @@ import { Navigate, useParams } from "react-router-dom";
 import Editor from "../components/Editor";
 
 export default function EditPost() {
-  const { id } = useParams<{ id: string }>();
-  const [title, setTitle] = useState<string>('');
-  const [summary, setSummary] = useState<string>('');
-  const [content, setContent] = useState<string>('');
-  const [files, setFiles] = useState<FileList | null>(null);
-  const [redirect, setRedirect] = useState<boolean>(false);
+  const { id } = useParams();
+  const [title, setTitle] = useState('');
+  const [summary, setSummary] = useState('');
+  const [content, setContent] = useState('');
+  const [files, setFiles] = useState(null);
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:4000/post/' + id)
+    fetch('https://repop-blog-server.onrender.com/post/' + id)
       .then(response => {
         response.json().then(postInfo => {
           setTitle(postInfo.title);
@@ -21,17 +21,17 @@ export default function EditPost() {
       });
   }, [id]);
 
-  async function updatePost(ev: FormEvent<HTMLFormElement>) {
+  async function updatePost(ev) {
     ev.preventDefault();
     const data = new FormData();
     data.set('title', title);
     data.set('summary', summary);
     data.set('content', content);
-    data.set('id', id!); // The '!' asserts that 'id' is not null or undefined.
+    data.set('id', id); // The '!' asserts that 'id' is not null or undefined.
     if (files && files[0]) {
       data.append('file', files[0]);
     }
-    const response = await fetch('http://localhost:4000/post', {
+    const response = await fetch('https://repop-blog-server.onrender.com/post', {
       method: 'PUT',
       body: data,
       credentials: 'include',

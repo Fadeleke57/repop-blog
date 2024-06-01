@@ -2,13 +2,6 @@ import React from "react";
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css';
 
-type Sources = any
-type DeltaStatic = any
-
-type EditorProps = {
-  value: ReactQuill.Value | undefined,
-  onChange: (value: string, delta: DeltaStatic, source: Sources, editor: ReactQuill.UnprivilegedEditor) => void
-}
 
 const modules = {
     toolbar: [
@@ -27,7 +20,7 @@ const formats = [
 'link', 'image'
 ];
 
-export default function Editor({value, onChange} : EditorProps) {
+export default function Editor({value, onChange}) {
     return (
         <ReactQuill
             value={value}

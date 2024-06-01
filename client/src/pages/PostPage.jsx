@@ -7,20 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import Loader from '../components/Loader';
 
-type PostInfoType = {
-  title: string,
-  createdAt: string,
-  author: {
-    _id: string,
-    username: string,
-  };
-  cover: string,
-  content: string,
-  summary : string,
-};
 
 export default function PostPage() {
-  const [postInfo, setPostInfo] = useState<PostInfoType | null>(null);
+  const [postInfo, setPostInfo] = useState(null);
   const [loading, setLoading] = useState(true)
   const context = useContext(UserContext);
 
@@ -28,11 +17,11 @@ export default function PostPage() {
     throw new Error('Please Provide User Context');
   }
   const { userInfo } = context;
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:4000/post/${id}`)
+      fetch(`https://repop-blog-server.onrender.com/post/${id}`)
         .then(response => response.json())
         .then(data => {
           setPostInfo(data);

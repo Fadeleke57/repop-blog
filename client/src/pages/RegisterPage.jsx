@@ -5,9 +5,9 @@ export default function RegisterPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    async function register(e : FormEvent<HTMLFormElement>) {
+    async function register(e) {
         e.preventDefault();
-        const response = await fetch('http://localhost:4000/register', {
+        const response = await fetch('https://repop-blog-server.onrender.com/register', {
             method: 'POST',
             body: JSON.stringify({username, password}),
             headers: {'Content-Type': 'application/json'} 

@@ -10,7 +10,7 @@ function FilterBar() {
     { id: 4, name: "Economy" },
   ]
  
-  function onClick(id : number) {
+  function onClick(id) {
     setActive(id)
   }
 

@@ -6,10 +6,10 @@ export default function CreatePost() {
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [files, setFiles] = useState(null);
   const [redirect, setRedirect] = useState(false);
 
-  async function createNewPost(e: FormEvent<HTMLFormElement>) {
+  async function createNewPost(e) {
     e.preventDefault();
 
     const data = new FormData();
@@ -20,7 +20,7 @@ export default function CreatePost() {
       data.append('file', files[0]);
     }
 
-    await fetch('http://localhost:4000/post', {
+    await fetch('https://repop-blog-server.onrender.com/post', {
       method: 'POST',
       body: data,
       credentials: 'include'

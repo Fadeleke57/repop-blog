@@ -1,14 +1,7 @@
 import styles from './AnimatedBtn.module.css';
 import React from 'react';
 
-type AnimatedBtnProps = {
-    isActive : boolean
-    setIsActive : React.Dispatch<React.SetStateAction<boolean>>
-    setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
-    menuOpen : boolean
-}
-
-const Animatedbtn = ({ isActive , setIsActive, setMenuOpen, menuOpen} : AnimatedBtnProps) => {
+const Animatedbtn = ({ isActive , setIsActive, setMenuOpen, menuOpen}) => {
 
     const handleClick = () => {
         setIsActive(!isActive);
