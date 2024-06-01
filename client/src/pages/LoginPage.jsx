@@ -1,4 +1,4 @@
-import React, { useState, useContext, FormEvent } from "react";
+import React, { useState, useContext} from "react";
 import { Navigate } from "react-router-dom";
 import {UserContext} from  '../UserContext.jsx'
 import './PostPage.css'
@@ -14,7 +14,7 @@ export default function LoginPage() {
     }
     const { setUserInfo } = context;
 
-    async function login(e: FormEvent<HTMLFormElement>) {
+    async function login(e) {
         e.preventDefault();
         const response = await fetch('https://repop-blog-server.onrender.com/login', {
             method: 'POST',

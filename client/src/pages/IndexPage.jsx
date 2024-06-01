@@ -11,7 +11,7 @@ export default function IndexPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:3000/post').then(response => {
+    fetch('https://repop-blog-server.onrender.com/post').then(response => {
       response.json().then((posts) => {
         setPosts(posts);
         setLoading(false)

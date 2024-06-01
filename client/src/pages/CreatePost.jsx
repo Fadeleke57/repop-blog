@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState} from 'react';
 import { Navigate } from 'react-router-dom';
 import Editor from '../components/Editor';
 
@@ -49,7 +49,7 @@ export default function CreatePost() {
       />
       <input
         type="file"
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setFiles(e.target.files)}
+        onChange={(e) => setFiles(e.target.files)}
       />
       <Editor value={content} onChange={setContent} />
       <button type="submit" style={{ marginTop: '5px' }}>Create Post</button>

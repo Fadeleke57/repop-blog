@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FormEvent, ChangeEvent } from "react";
+import React, { useEffect, useState} from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Editor from "../components/Editor";
 
@@ -61,7 +61,7 @@ export default function EditPost() {
       />
       <input
         type="file"
-        onChange={(ev: ChangeEvent<HTMLInputElement>) => setFiles(ev.target.files)}
+        onChange={(ev) => setFiles(ev.target.files)}
       />
       <Editor onChange={setContent} value={content} />
       <button style={{ marginTop: '5px' }}>Update post</button>
