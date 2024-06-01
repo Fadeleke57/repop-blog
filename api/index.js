@@ -8,9 +8,11 @@ const postRoutes = require('./routes/postRoutes');
 
 configureMiddleware(app); // configures middleware
 
+app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use('/api/upload', require('./api/upload'));
+
 app.use(userRoutes); // use routes
 app.use(postRoutes);
-
 
 const PORT = process.env.PORT || 4000; // starts server
 app.listen(PORT, () => {
