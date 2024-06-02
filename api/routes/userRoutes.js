@@ -3,6 +3,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const authenticateToken = require('../middleware/authenticateToken');
 
 const router = express.Router();
 const salt = bcrypt.genSaltSync(10);
@@ -45,8 +46,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
-router.get('/profile', (req, res) => {
+router.get('/profile', authenticateToken, (req, res) => {
   res.json(req.user);
 });
 
