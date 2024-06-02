@@ -34,7 +34,7 @@ export default function EditPost() {
     // Debugging: Print out all cookies
     console.log('Document Cookies:', document.cookie);
 
-    const tokenCookie = document.cookie.split('; ').find(row => row.startsWith('token='));
+    const tokenCookie = document.cookie
     if (!tokenCookie) {
       console.error('No token found in cookies');
       return;
