@@ -4,7 +4,7 @@ function FilterBar() {
   const [active, setActive] = useState(1)
 
   const choices = [
-    { id: 1, name: "All",},
+    { id: 1, name: "All"},
     { id: 2, name: "Company"},
     { id: 3, name: "Sustainability"},
     { id: 4, name: "Economy" },
@@ -17,9 +17,9 @@ function FilterBar() {
   return (
     <div className="filter-bar">
         <div className='bar-wrapper'>
-          {choices.map(choice => (
+          {choices.map((choice, id) => (
             <p
-              key={choice.id}
+              key={id}
               className={active === choice.id ? "active" : ""}
               onClick={() => onClick(choice.id)}
             >
@@ -29,8 +29,8 @@ function FilterBar() {
         </div> 
         <div className='select-wrapper'>
           <select>
-            {choices.map(choice => (
-              <option value={choice.id}>
+            {choices.map((choice, id) => (
+              <option value={choice.id} key={id}>
                 {choice.name}
               </option>
             ))}

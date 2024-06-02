@@ -86,7 +86,7 @@ export default function IndexPage() {
 
       <div className="content-wrapper">
         {posts.length > 0 && posts.map((post, id) => (
-          <Link className="post-wrapper" to={`/post/${post._id}`}>
+          <Link className="post-wrapper" to={`/post/${post._id}`} key={id}> 
             <Post key={id} {...post} postConfigs={{isFeaturedPost: false, imageAllowed: true, isSummaryAllowed: true}}/>
           </Link>
         ))}

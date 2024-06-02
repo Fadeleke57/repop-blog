@@ -95,25 +95,25 @@
 
 .filter-bar select {
   -webkit-appearance: none;
-    appearance: none;
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    color: rgba(14, 16, 20, .7);
-    font-family: inherit;
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: inherit;
-    font-size: 17px;
-    font-style: inherit;
-    font-weight: inherit;
-    font-weight: 500;
-    height: 100%;
-    line-height: inherit;
-    line-height: 100%;
-    margin: 0;
-    padding: 0 0 0 15px;
-    vertical-align: baseline;
-    width: 100%
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: rgba(14, 16, 20, .7);
+  font-family: inherit;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: inherit;
+  font-size: 17px;
+  font-style: inherit;
+  font-weight: inherit;
+  font-weight: 500;
+  height: 100%;
+  line-height: inherit;
+  line-height: 100%;
+  margin: 0;
+  padding: 0 0 0 15px;
+  vertical-align: baseline;
+  width: 100%;
 }
 
 .filter-bar p:hover {
@@ -218,12 +218,14 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
   .featured-content-wrapper {
     display: flex;
     flex-direction: column;
   }
-
+  .content-wrapper {
+    grid-template-columns: 1fr;
+  }
   .featured-posts-ni, .ni-wrapper {
     width: 100%;
   }

@@ -17,16 +17,16 @@ function Footer() {
           </ul>
           <ul className={styles.menu}>
             <li>
-              <h4>Foundation</h4>
+              <h4>Company</h4>
             </li>
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/#contact">Contact</Link>
+              <Link to="/">Lorem Ipsum</Link>
             </li>
             <li>
-              <Link to="/internships">Internship</Link>
+              <Link to="/">Lorem Ipsum</Link>
             </li>
           </ul>
           <ul className={styles.menu}>
@@ -34,16 +34,16 @@ function Footer() {
               <h4>About</h4>
             </li>
             <li>
-              <Link to="/about">History</Link>
+              <Link to="/">Lorem Ipsum</Link>
             </li>
             <li>
-              <Link to="/#mission">Mission</Link>
+              <Link to="/">Lorem Ipsum</Link>
             </li>
             <li>
-              <Link to="/about/#awards">Awards</Link>
+              <Link to="/">Lorem Ipsum</Link>
             </li>
             <li>
-              <Link to="/trustees">Trustees</Link>
+              <Link to="/">Lorem Ipsum</Link>
             </li>
           </ul>
           <ul className={styles.menu}>
@@ -51,10 +51,10 @@ function Footer() {
               <h4>Quick Links</h4>
             </li>
             <li>
-              <Link to="https://www.cattrail.com/">Cat Trail</Link>
+              <Link to="">Lorem Ipsum</Link>
             </li>
             <li>
-              <Link to="https://tally.so/r/mJ6r0R">Internship Apply</Link>
+              <Link to="">Lorem Ipsum</Link>
             </li>
           </ul>
         </div>
@@ -64,13 +64,13 @@ function Footer() {
                     <h4>Reach Us</h4>
                 </li>
                 <li>
-                    <p>+1 (732) 666-8394</p>
+                    <p>+1 (111) 111-2222</p>
                 </li>
                 <li>
-                    <p>fadeleke57@gmail.com</p>
+                    <p>fernit@gmail.com</p>
                 </li>
                 <li>
-                    <p>irobeast31@gmail.com</p>
+                    <p>fernit@gmail.com</p>
                 </li>
             </ul>
         </div>

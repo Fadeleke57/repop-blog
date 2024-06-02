@@ -2,11 +2,13 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const Post = require('../models/Post');
+const multer = require('multer');
+const uploadMiddleware = multer({ dest: 'uploads/' });
 
 const router = express.Router();
 const secret = process.env.REACT_APP_SECRET_HASH;
 
-router.post('/post', async (req, res) => {
+router.post('/post', uploadMiddleware.single('file'), async (req, res) => {
   const { originalname, path } = req.file;
   const parts = originalname.split('.');
   const ext = parts[parts.length - 1];
@@ -38,7 +40,7 @@ router.get('/post', async (req, res) => {
   res.json(posts);
 });
 
-router.put('/post', async (req, res) => {
+router.put('/post', uploadMiddleware.single('file'), async (req, res) => {
   let newPath = null;
 
   if (req.file) {
@@ -52,7 +54,7 @@ router.put('/post', async (req, res) => {
   const { token } = req.cookies;
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
-    const { id, title, summary, content } = req.body;
+    const { id, title, summary, content } = await req.body;
     const postDoc = await Post.findById(id);
     const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
     if (!isAuthor) {

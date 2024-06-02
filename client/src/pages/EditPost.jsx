@@ -35,8 +35,7 @@ export default function EditPost() {
     const response = await fetch('https://repop-blog-server.onrender.com/post', {
       method: 'PUT',
       body: data,
-      credentials: 'include',
-      mode: 'no-cors'
+      credentials: 'include'
     });
   
     if (response.ok) {
