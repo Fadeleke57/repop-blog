@@ -32,7 +32,12 @@ export default function EditPost() {
       data.append('file', files[0]);
     }
   
-    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+  if (!token) {
+    console.error('No token found in cookies');
+    return;
+  }
+  const tokenValue = token.split('=')[1];
   
   const response = await fetch('https://repop-blog-server.onrender.com/post', {
     method: 'PUT',
