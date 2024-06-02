@@ -23,7 +23,8 @@ export default function CreatePost() {
     await fetch('https://repop-blog-server.onrender.com/post', {
       method: 'POST',
       body: data,
-      credentials: 'include'
+      credentials: 'include',
+      mode: 'no-cors'
     });
 
     setRedirect(true);

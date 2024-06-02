@@ -36,6 +36,7 @@ export default function EditPost() {
       method: 'PUT',
       body: data,
       credentials: 'include',
+      mode: 'no-cors'
     });
   
     if (response.ok) {
