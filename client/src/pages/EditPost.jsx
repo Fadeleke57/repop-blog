@@ -11,7 +11,7 @@ export default function EditPost() {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch('https://repop-blog-server.onrender.com/post/' + id)
+    fetch('http://localhost:4000/post/' + id)
       .then(response => {
         response.json().then(postInfo => {
           setTitle(postInfo.title);
@@ -32,40 +32,37 @@ export default function EditPost() {
       data.append('file', files[0]);
     }
     // Debugging: Print out all cookies
-    console.log('Document Cookies:', document.cookie);
+    //console.log('Document Cookies:', document.cookie);
 
-    const tokenCookie = document.cookie
-    if (!tokenCookie) {
-      console.error('No token found in cookies');
-      return;
-    }
-    const token = tokenCookie.split('=')[1];
+    ///const tokenCookie = document.cookie
+    //if (!tokenCookie) {
+     /// console.error('No token found in cookies');
+    //  return;
+    ///}
+    //const token = tokenCookie.split('=')[1];
   
-    console.log('Token:', token);
+    //console.log('Token:', token);
   
-  const response = await fetch('https://repop-blog-server.onrender.com/post', {
-    method: 'PUT',
-    body: data,
-    headers: {
-      'Authorization': `Bearer ${token}`
-    },
-    credentials: 'include'
-  });
-  
-    if (response.ok) {
-      setRedirect(true);
-    } else {
-      // Check if the response is JSON or plain text
-      const contentType = response.headers.get('content-type');
-      if (contentType && contentType.includes('application/json')) {
-        const errorData = await response.json();
-        console.error('Error updating post:', errorData);
+    const response = await fetch('https://repop-blog-server.onrender.com/post', {
+      method: 'PUT',
+      body: data,
+      credentials: 'include'
+    });
+    
+      if (response.ok) {
+        setRedirect(true);
       } else {
-        const errorText = await response.text();
-        console.error('Error updating post:', errorText);
+        // Check if the response is JSON or plain text
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const errorData = await response.json();
+          console.error('Error updating post:', errorData);
+        } else {
+          const errorText = await response.text();
+          console.error('Error updating post:', errorText);
+        }
       }
     }
-  }
 
   if (redirect) {
     return <Navigate to={'/post/' + id} />
