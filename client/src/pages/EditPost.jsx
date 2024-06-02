@@ -32,11 +32,16 @@ export default function EditPost() {
       data.append('file', files[0]);
     }
   
-    const response = await fetch('https://repop-blog-server.onrender.com/post', {
-      method: 'PUT',
-      body: data,
-      credentials: 'include'
-    });
+    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+  
+  const response = await fetch('https://repop-blog-server.onrender.com/post', {
+    method: 'PUT',
+    body: data,
+    headers: {
+      'Authorization': `Bearer ${token}`
+    },
+    credentials: 'include'
+  });
   
     if (response.ok) {
       setRedirect(true);

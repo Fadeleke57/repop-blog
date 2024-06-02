@@ -52,13 +52,17 @@ router.put('/post', uploadMiddleware.single('file'), async (req, res) => {
   }
 
   const { token } = req.cookies;
+  if (!token) {
+    return res.status(401).json({ error: 'Authentication token is missing' });
+  }
   jwt.verify(token, secret, {}, async (err, info) => {
-    if (err) throw err;
-    const { id, title, summary, content } = await req.body;
+    if (err) return res.status(401).json({ error: 'Invalid token' });
+
+    const { id, title, summary, content } = req.body;
     const postDoc = await Post.findById(id);
     const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
     if (!isAuthor) {
-      return res.status(400).json('INVALID PERMISSION');
+      return res.status(403).json('INVALID PERMISSION');
     }
 
     postDoc.title = title;
