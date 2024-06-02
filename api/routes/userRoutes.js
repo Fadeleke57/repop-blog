@@ -38,14 +38,14 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/profile', (req, res) => {
+/*router.get('/profile', (req, res) => {
   const { token } = req.cookies;
   jwt.verify(token, secret, {}, (err, info) => {
     if (err) throw err;
     res.json(info);
   });
 });
-
+*/
 router.post('/logout', (req, res) => {
   res.cookie('token', '', { httpOnly: true, secure: true, sameSite: 'strict' }).json('ok');
 });
