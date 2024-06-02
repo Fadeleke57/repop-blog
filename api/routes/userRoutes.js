@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
   if (passOk) {
     jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
       if (err) throw err;
-      res.cookie('token', token, {secure : true}).json({
+      res.cookie('token', token, {httpOnly: true, secure: true}).json({
         id: userDoc._id,
         username,
       });
