@@ -4,7 +4,7 @@ const fs = require('fs');
 const Post = require('../models/Post');
 const authenticateToken = require('../middleware/authenticateToken');
 
-router.post('/post', authenticateToken, async (req, res) => {
+router.post('/post', async (req, res) => {
   const { originalname, path } = req.file;
   const parts = originalname.split('.');
   const ext = parts[parts.length - 1];
@@ -31,7 +31,7 @@ router.get('/post', async (req, res) => {
   res.json(posts);
 });
 
-router.put('/post', authenticateToken, async (req, res) => {
+router.put('/post', async (req, res) => {
   let newPath = null;
 
   if (req.file) {
