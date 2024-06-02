@@ -31,13 +31,17 @@ export default function EditPost() {
     if (files && files[0]) {
       data.append('file', files[0]);
     }
+    // Debugging: Print out all cookies
+    console.log('Document Cookies:', document.cookie);
+
+    const tokenCookie = document.cookie.split('; ').find(row => row.startsWith('token='));
+    if (!tokenCookie) {
+      console.error('No token found in cookies');
+      return;
+    }
+    const token = tokenCookie.split('=')[1];
   
-    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
-  if (!token) {
-    console.error('No token found in cookies');
-    return;
-  }
-  const tokenValue = token.split('=')[1];
+    console.log('Token:', token);
   
   const response = await fetch('https://repop-blog-server.onrender.com/post', {
     method: 'PUT',
