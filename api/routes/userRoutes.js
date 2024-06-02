@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
   if (passOk) {
     jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
       if (err) throw err;
-      res.cookie('token', token).json({
+      res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'strict'}).json({
         id: userDoc._id,
         username,
       });
@@ -47,7 +47,7 @@ router.get('/profile', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  res.cookie('token', '').json('ok');
+  res.cookie('token', '', { httpOnly: true, secure: true, sameSite: 'strict' }).json('ok');
 });
 
 module.exports = router;
