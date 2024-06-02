@@ -1,8 +1,10 @@
 const express = require('express');
-const router = express.Router();
+const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const Post = require('../models/Post');
-const authenticateToken = require('../middleware/authenticateToken');
+
+const router = express.Router();
+const secret = process.env.REACT_APP_SECRET_HASH;
 
 router.post('/post', async (req, res) => {
   const { originalname, path } = req.file;
@@ -11,15 +13,20 @@ router.post('/post', async (req, res) => {
   const newPath = path + '.' + ext;
   fs.renameSync(path, newPath);
 
-  const { title, summary, content } = req.body;
-  const postDoc = await Post.create({
-    title,
-    summary,
-    content,
-    cover: newPath,
-    author: req.user.id,
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err;
+
+    const { title, summary, content } = req.body;
+    const postDoc = await Post.create({
+      title,
+      summary,
+      content,
+      cover: newPath,
+      author: info.id,
+    });
+    res.json(postDoc);
   });
-  res.json(postDoc);
 });
 
 router.get('/post', async (req, res) => {
@@ -42,20 +49,24 @@ router.put('/post', async (req, res) => {
     fs.renameSync(path, newPath);
   }
 
-  const { id, title, summary, content } = req.body;
-  const postDoc = await Post.findById(id);
-  const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(req.user.id);
-  if (!isAuthor) {
-    return res.status(400).json('INVALID PERMISSION');
-  }
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err;
+    const { id, title, summary, content } = req.body;
+    const postDoc = await Post.findById(id);
+    const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
+    if (!isAuthor) {
+      return res.status(400).json('INVALID PERMISSION');
+    }
 
-  postDoc.title = title;
-  postDoc.summary = summary;
-  postDoc.content = content;
-  postDoc.cover = newPath ? newPath : postDoc.cover;
+    postDoc.title = title;
+    postDoc.summary = summary;
+    postDoc.content = content;
+    postDoc.cover = newPath ? newPath : postDoc.cover;
 
-  await postDoc.save();
-  res.json(postDoc);
+    await postDoc.save();
+    res.json(postDoc);
+  });
 });
 
 router.get('/post/:id', async (req, res) => {
